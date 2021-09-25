@@ -1,0 +1,107 @@
+{% extends 'members/base.html' %}
+<!-- STATIC -->
+{% load static %}
+<!-- BODY -->
+{% block content %}
+<h1>update-member.html</h1>
+
+<!-- EXTRA STYLES -->
+
+<!-- IF STATMENT -->
+{% if request.user.profile.id_no %}
+
+<div class="alert alert-success d-flex align-items-center" role="alert">
+  <svg
+    class="bi flex-shrink-0 me-2"
+    width="24"
+    height="24"
+    role="img"
+    aria-label="Success:"
+  >
+    <use xlink:href="#check-circle-fill" />
+  </svg>
+  <div><strong>Your Membership No.</strong> {{request.user.profile.id_no}}</div>
+</div>
+
+{% else %}
+
+<!-- ALERT -->
+{# if confirm #}
+
+<!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Weldone!</strong> Your profile was created successfully.
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div> -->
+
+{# endif #}
+<!-- MEMBER -->
+<div class="mt-2 my-5">
+  <div class="spouse-card p-3">
+    <center>
+      <h5 class="spouse-fonts">CREATE A PROFILE FOR ({{request.user}})</h5>
+    </center>
+  </div>
+  <!-- FORM -->
+  <form method="POST">
+    {% csrf_token %}
+    <div class="profile-info shadow-lg rounded p-3">
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">ID Number:</div>
+        <div class="col-sm">{{member_form.membership_no}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Frist Name:</div>
+        <div class="col-sm">{{member_form.first_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Second Name:</div>
+        <div class="col-sm">{{member_form.last_name}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">ID number:</div>
+        <div class="col-sm">{{membershipnumber_form.id_number}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">House Number & Street:</div>
+        <div class="col-sm">{{member_form.street}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Town/Suburb:</div>
+        <div class="col-sm">{{member_form.town}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">City:</div>
+        <div class="col-sm">{{member_form.city}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Zip Code:</div>
+        <div class="col-sm">{{member_form.zip_code}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact:</div>
+        <div class="col-sm">{{member_form.phone}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Contact:</div>
+        <div class="col-sm">{{member_form.phone}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <div class="col-sm sm-padding">Email:</div>
+        <div class="col-sm">{{member_form.email}}</div>
+      </div>
+      <div class="row p-3 rounded m-2 info-details-bg">
+        <center>
+          <button class="btn btn-primary">SUBMIT</button>
+        </center>
+      </div>
+    </div>
+  </form>
+</div>
+{% endif %}
+<!-- BODY END -->
+{% endblock %}

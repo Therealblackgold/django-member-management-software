@@ -1,0 +1,142 @@
+{# extends 'christian_admin/main.html' #}
+
+<!-- Main template -->
+{% extends 'main/main.html' %}
+
+<!-- Static Files -->
+{% load static %}
+
+<style>
+  /* sidebar */
+
+  .text-deco {
+    text-decoration: none;
+  }
+
+  .sidebar-container {
+    width: 100%;
+    margin-left: 40px;
+  }
+
+  .package-icon {
+    color: white;
+    font-size: 25px;
+  }
+
+  .sidebar-img {
+    height: 200px;
+    width: 100%;
+  }
+
+  .sidebar-box {
+    height: 100px;
+    width: 100%;
+    background-color: var(--secondart-color);
+  }
+
+  .sidebar-fonts {
+    color: white;
+  }
+</style>
+
+{% block content %}
+
+<!-- BODY -->
+<div class="col">
+  <!-- MEMBERSHIP JUMBOTRON -->
+  <div class="mt-1">
+    <div class="profile-container p-3 rounded shadow">
+      <div class="row">
+        <div class="col">
+          <h6 class="profile-headings"><strong>ID No :</strong></h6>
+        </div>
+        <div class="col"><strong>{{pending.user.identification}}</strong></div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6 class="profile-headings"><strong>Package :</strong></h6>
+        </div>
+        <div class="col"><strong>{{pending.package}}</strong></div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6 class="profile-headings"><strong>Status :</strong></h6>
+        </div>
+        <div class="col"><strong>{{pending.status}}</strong></div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6 class="profile-headings"><strong>Received by :</strong></h6>
+        </div>
+        <div class="col"><strong>Jamal toshiba</strong></div>
+      </div>
+      <div class="row profile">
+        <div class="col">
+          <h6 class="profile-headings"><strong>Date Issued :</strong></h6>
+        </div>
+        <div class="col"><strong>{{pending.created}}</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PENDING MEMBER TABLE -->
+  {% if pending.user.first_name %}
+  <div class="spouse-card p-3 mt-4">
+    <center>
+      <h5 class="spouse-fonts">
+        APPLICANT ({{pending.user.first_name}} {{pending.user.last_name}})
+      </h5>
+      <p class="text-white">ID Nunmber: {{pending.user.identification}}</p>
+    </center>
+  </div>
+  {% else %}
+  <div class="spouse-card p-3">
+    <center>
+      <h5 class="spouse-fonts">MEMBER</h5>
+    </center>
+  </div>
+  {% endif %}
+  <div class="profile-info shadow-lg rounded p-3 mb-5">
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Frist Name:</div>
+      <div class="col-sm">{{pending.user.first_name}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Last Name:</div>
+      <div class="col-sm">{{pending.user.last_name}}</div>
+    </div>
+    <!-- <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">ID number:</div>
+      <div class="col-sm">id number</div>
+    </div> -->
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Physical Address:</div>
+      <div class="col-sm">{{pending.street}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Contact:</div>
+      <div class="col-sm">{{pending.phone}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Contact:</div>
+      <div class="col-sm">{{pending.phone}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding">Email:</div>
+      <div class="col-sm">{{pending.user.email}}</div>
+    </div>
+    <div class="row p-3 rounded m-2 info-details-bg">
+      <div class="col-sm sm-padding"></div>
+      <center>
+        <a
+          href="{% url 'update_pending_member' pending.id %}"
+          class="btn btn-primary"
+          style="background-color: var(--secondart-color); margin-right: 30px"
+          ><i class="fas fa-edit" style="margin-right: 6px"></i>EDIT</a
+        >
+      </center>
+    </div>
+  </div>
+</div>
+<p>pending_member_view.html</p>
+{% endblock %}

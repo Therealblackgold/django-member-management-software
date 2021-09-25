@@ -1,0 +1,53 @@
+
+<style>
+   .christian-bg {
+    background-color: #282277;
+    color: white;
+  }
+   .italic-600 {
+    font-weight: 600 !important;
+    font-style: italic !important;
+  }
+   .btn-outline-secondary {
+      background-color: #e3833e;
+      color: #ffffff;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark christian-bg mb-5">
+  <div class="container-fluid">
+    <a class="navbar-brand italic-600" href="{% url 'admin-home' %}">Admin {{ request.user }}</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white" aria-current="page" href="{% url 'admin-home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'logout' %}">Logout</a>
+        </li>
+        <!--  -->
+      <form method="POST" action="{% url 'search-member' %}" class="d-flex">
+        {% csrf_token %}
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search ID Number"
+          name="searched"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>

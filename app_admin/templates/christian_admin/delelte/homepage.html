@@ -1,0 +1,100 @@
+{% extends 'christian_admin/main.html' %}
+<!-- STATIC -->
+{% load static %}
+<!-- BODY -->
+{% block content %}
+
+<div class="container mt-1">
+  <div class="row">
+    <div class="col-sm rounded shadow m-1 p-3">
+      <h6 class="burial-header pt-2 pb-2 px-2 rounded shadow">
+        Upcoming Burials
+      </h6>
+      <div class="row pt-4">
+        <div class="col bruials-font-color">Jamal James</div>
+        <div class="col bruials-font-color bruial-hide">20 August 2021</div>
+        <div class="col bruials-font-color bruial-hide">Package B</div>
+        <div class="col bruials-font-color">Tsakane</div>
+        <div class="col">
+          <a
+            href="../Brurials/upcoming_brurials.html"
+            class="p-0 m-0 brurial-select"
+          >
+            select
+          </a>
+        </div>
+      </div>
+      <div class="divider mt-2"></div>
+      <div class="row pt-4">
+        <div class="col bruials-font-color">Arnold James</div>
+        <div class="col bruials-font-color bruial-hide">20 August 2021</div>
+        <div class="col bruials-font-color bruial-hide">Package B</div>
+        <div class="col bruials-font-color">Brakapan</div>
+        <div class="col">
+          <p class="p-0 m-0 brurial-select">select</p>
+        </div>
+      </div>
+      <div class="divider mt-2"></div>
+    </div>
+    <div class="col-sm rounded m-1 remove-img">
+      <img src="{% static 'images/bg-1.jpg' %}" class="img-deco" alt="" />
+    </div>
+  </div>
+</div>
+<div class="container my-5">
+  <div class="card-table shadow-lg rounded p-3 pb-5">
+    <div class="row mb-4 mt-2">
+      <div class="col-sm-3 table-member p-3 rounded shadow">
+        <div class="row">
+          <div class="col">ADD MEMBER</div>
+          <div class="col-6">
+            <a href="http://127.0.0.1:8000/admin/auth/user/add/"
+              ><i class="fas fa-user-plus table-member-icon"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h6 class="headings pt-2">New Clients</h6>
+    <div class="row mt-4">
+      <div class="col table-color"><strong>Registration name</strong></div>
+      <div class="col table-color"><strong>Client</strong></div>
+      <div class="col table-color hide-component">
+        <strong>Package</strong>
+      </div>
+      <div class="col table-color hide-component">
+        <strong>Status</strong>
+      </div>
+      <div class="col table-color hide-component"><strong>Date</strong></div>
+      <div class="col table-color"></div>
+    </div>
+
+    {% for pending in pending %}
+    <div class="divider mt-1"></div>
+    <div class="row pt-3">
+      <div class="col">
+        {{pending.user.first_name}} {{pending.user.last_name}}
+        <p class="table-color table-email">{{pending.user.email}}</p>
+      </div>
+      <div class="col">
+        {{pending.first_name}} {{pending.last_name}}
+        <p class="table-color table-email">{{pending.email}}</p>
+      </div>
+      <div class="col hide-component">{{pending.package}}</div>
+      <div class="col hide-component">
+        <button type="button" class="btn btn-success">
+          {{pending.status}}
+        </button>
+      </div>
+      <div class="col hide-component">{{pending.created}}</div>
+      <div class="col">
+        <a href="{% url 'view_pending' pending.id %}">
+          <button type="button" class="btn client-button">View Client</button>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

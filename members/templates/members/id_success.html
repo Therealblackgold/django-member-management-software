@@ -1,0 +1,45 @@
+<!-- Main Template -->
+{% extends 'main/main.html' %}
+
+<!-- Static File -->
+{% load static %}
+
+<!-- Body -->
+{% block content %}
+
+<div class="d-flex justify-content-center">
+  <img
+    class="christian-funerals-logo"
+    src="{% static 'images/logo-removed.png' %}"
+    alt=""
+  />
+</div>
+<!-- Alert -->
+<style>
+  @media only screen and (min-width: 1000px) {
+    /* For large screens: */
+    .m-lg-l {
+      margin-right: 200px;
+      margin-bottom: 100px;
+    }
+  }
+</style>
+<center>
+  <div class="alert alert-primary m-lg-l" role="alert">
+    <h4 class="alert-heading">
+      <strong>{{request.user.identification}}</strong> Saved succesfully!
+    </h4>
+    <p class="col-md-8 fs-4">Click next to continue.</p>
+    <hr />
+    <a
+      href="{% url 'update-member' profile_id=request.user.id %}"
+      class="btn btn-primary"
+      >Next</a
+    >
+  </div>
+</center>
+<!-- Success Alert end -->
+
+<!-- id_number if statement else -->
+
+{% endblock %}

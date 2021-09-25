@@ -1,0 +1,97 @@
+{% extends 'main/main.html' %}
+
+<!-- Static iles -->
+{% load static %}
+
+<!-- Body -->
+{% block content %}
+<!-- <div class="d-flex justify-content-center">
+  <img
+    class="christian-funerals-logo"
+    src="{% static 'images/logo-removed.png' %}"
+    alt=""
+  />
+</div> -->
+
+<!-- Admin if Statmemnt -->
+{% if request.user.is_staff %}
+<!-- Admin landing page -->
+<div class="d-flex justify-content-center">
+  <img
+    class="christian-funerals-logo"
+    src="{% static 'images/logo-removed.png' %}"
+    alt="Mbonani Christian Funerals Logo"
+  />
+</div>
+<!-- image end -->
+<div class="alert alert-primary" role="alert">
+  <h4 class="alert-heading">Admin {{request.user}}</h4>
+  <p>{{request.user.first_name}} {{request.user.last_name}}</p>
+  <p>{{request.user.email}}</p>
+  <p>{{request.user.identification}}</p>
+  <p>{{request.user.member.city}}</p>
+  <hr />
+  <p class="mb-0">{{request.user.member.created}}</p>
+</div>
+<!-- Admin landing page end -->
+{% else %}
+
+<!-- Member if Statmemnt -->
+{% if membership_id %}
+
+<!-- id_number if statement start -->
+
+<!-- Member landing page -->
+<div class="alert alert-primary mt-1 mb-5" role="alert">
+  <h4 class="alert-heading">User authenticated successfuly!</h4>
+  <p>{{request.user.first_name}} {{request.user.last_name}}</p>
+  <p>{{request.user.email}}</p>
+  <p>{{request.user.identification}}</p>
+  <hr />
+  <p class="mb-0">{{request.user.member.created}}</p>
+  <a href="{% url 'member-homepage' %}" class="btn btn-primary my-3">Home</a>
+</div>
+<!-- Member landing page end -->
+
+<!-- id_number if statement else -->
+{% else %}
+<!--  -->
+
+<!-- Jumbotron -->
+<div class="d-flex justify-content-center">
+  <img
+    class="christian-funerals-logo"
+    src="{% static 'images/logo-removed.png' %}"
+    alt="Mbonani Christian Funerals Logo"
+  />
+</div>
+<!-- IMAGE -->
+<div class="row align-items-md-stretch mb-5 d-flex justify-content-center">
+  <div class="col-md-6">
+    <div class="h-100 p-5 text-white bg-dark rounded-3 mb-3">
+      <h3>Hello {{request.user}}</h3>
+      <p>
+        Well done on taking the first steps to coving your family during hard
+        times, to continue please add your South African valid ID number &
+        create a Member Profile
+      </p>
+      <!-- Form -->
+      <div class="form-group">
+        <form method="POST">
+          {% csrf_token %} {{form.as_p}}
+          <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      var member = "{{user.id}}";
+      document.getElementById("member").value = member;
+    </script>
+    {% endif %}
+    <!-- id_number if statement end -->
+  </div>
+</div>
+<!-- Admin if statement end -->
+{% endif %}
+<!-- Body end -->
+{% endblock %}
