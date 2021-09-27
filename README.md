@@ -22,6 +22,8 @@ This project is a user management system for a local business includes user regi
  
  ![admin-member-view](https://user-images.githubusercontent.com/58868373/134900275-1296ba61-a406-4b66-a422-b75f2a72130d.png)
  
- ![admin-payments](https://user-images.githubusercontent.com/58868373/134900373-a29a54d8-f4fa-4ea6-b19a-62270e331548.png)
+ ![member-form](https://user-images.githubusercontent.com/58868373/134907768-009ec2c0-7290-4e8d-b9a4-3300cadb322c.png)
+
+  ![admin-payments](https://user-images.githubusercontent.com/58868373/134900373-a29a54d8-f4fa-4ea6-b19a-62270e331548.png)
  
  ![admin-upcoming-burials](https://user-images.githubusercontent.com/58868373/134900460-e0a57633-5cd2-45b4-b82c-1ae306232dbd.png)
