@@ -1,6 +1,6 @@
 # django-member-management-software
 
-This project is a user management system for a local business includes user registration, member-profile, spouse and beneficiaries can be adedd to a members plan using a mebership number.
+This project is a user management system for a local business includes user registration, member-profile, spouse and beneficiaries can be adedd to a members plan using a mebership number with a simple responsive design.
 
 # The admin section includes 
 1) pending member section
