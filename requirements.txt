@@ -37,7 +37,7 @@ importlib-metadata==4.6.4
 incremental==21.3.0
 kombu==5.1.0
 msgpack==1.0.2
-Pillow==8.3.1
+Pillow==8.3.2
 prompt-toolkit==3.0.20
 py-moneyed==1.2
 pyasn1==0.4.8
